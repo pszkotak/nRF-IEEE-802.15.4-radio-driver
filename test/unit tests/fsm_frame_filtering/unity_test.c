@@ -619,7 +619,7 @@ void test_OnBcmatchEventStateRx_TransactionShallBeAbortedIfFrameLengthInvalidInP
     nrf_radio_bcc_get_ExpectAndReturn(expected_bcc);
     nrf_radio_event_get_ExpectAndReturn(NRF_RADIO_EVENT_CRCERROR, false);
 
-    nrf_802154_filter_frame_part_ExpectAndReturn(m_test_rx_buffer.psdu, NULL, NRF_802154_RX_ERROR_LENGTH);
+    nrf_802154_filter_frame_part_ExpectAndReturn(m_test_rx_buffer.psdu, NULL, NRF_802154_RX_ERROR_INVALID_LENGTH);
     nrf_802154_filter_frame_part_IgnoreArg_p_num_bytes();
 
     nrf_802154_pib_promiscuous_get_ExpectAndReturn(true);
@@ -630,7 +630,7 @@ void test_OnBcmatchEventStateRx_TransactionShallBeAbortedIfFrameLengthInvalidInP
                              NRF_RADIO_SHORT_RXREADY_START_MASK |
                              NRF_RADIO_SHORT_ADDRESS_BCSTART_MASK);
 
-    mock_receive_failed_notify(NRF_802154_RX_ERROR_LENGTH);
+    mock_receive_failed_notify(NRF_802154_RX_ERROR_INVALID_LENGTH);
 
     irq_bcmatch_state_rx();
 }

@@ -601,7 +601,7 @@ void test_OnCrcOkEventStateRx_ShallNotifyReceivedFrameIfFrameLengthIsInvalidInPr
     ack_requested_set();
     frame_type_ack_set();
 
-    nrf_802154_filter_frame_part_ExpectAndReturn(m_test_radio_buffer.psdu, NULL, NRF_802154_RX_ERROR_LENGTH);
+    nrf_802154_filter_frame_part_ExpectAndReturn(m_test_radio_buffer.psdu, NULL, NRF_802154_RX_ERROR_INVALID_LENGTH);
     nrf_802154_filter_frame_part_IgnoreArg_p_num_bytes();
 
     nrf_802154_pib_promiscuous_get_ExpectAndReturn(true);
